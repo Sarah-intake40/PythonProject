@@ -1,0 +1,16 @@
+{% load static %}
+<html>
+	<head> 
+
+	</head>
+<body>
+	<link rel="stylesheet" type="text/css" href="{% static 'css/mystyle.css' %}" />
+{% include "Post/header.html" %}
+	{% block main_block %}
+		
+	{% endblock %}
+
+{% include "Post/footer.html" %}
+
+ </body>
+</html>
