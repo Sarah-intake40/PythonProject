@@ -4,7 +4,7 @@ from .models import person,Category,post,forbWords
 class UserForm(forms.ModelForm):
     class Meta:
         model=person
-        fields=['name','email','password','flag_admin']
+        fields=['name','email','password']
 
 
 class CategoryForm(forms.ModelForm):
