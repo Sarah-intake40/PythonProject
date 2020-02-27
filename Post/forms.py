@@ -1,10 +1,11 @@
 from django import forms
-from .models import person,Category,post,forbWords
+from .models import Category,post,forbWords
+from django.contrib.auth.models import User
 
 class UserForm(forms.ModelForm):
     class Meta:
-        model=person
-        fields=['name','email','password','flag_admin']
+        model=User
+        fields=['username','first_name','last_name','email','password']
 
 
 class CategoryForm(forms.ModelForm):
@@ -16,7 +17,7 @@ class CategoryForm(forms.ModelForm):
 class PostForm(forms.ModelForm):
     class Meta:
         model=post
-        fields=['title','content','post_date','Owner','postCat','image']
+        fields=['title','content','post_date','Owner','Category_id','image']
     
 class wordForm(forms.ModelForm):
     class Meta:
@@ -27,3 +28,4 @@ class wordForm(forms.ModelForm):
 
     
     
+
