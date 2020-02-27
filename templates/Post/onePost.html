@@ -1,12 +1,9 @@
-
-
-
-
 <!DOCTYPE html>
 <html lang="en">
-  {% load static %}
+	{% load static %}
+
   <head>
-    <title>All Posts</title>
+    <title>PostsByCategory</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     
@@ -40,20 +37,19 @@
 		<aside id="colorlib-aside" role="complementary" class="js-fullheight">
 			<nav id="colorlib-main-menu" role="navigation">
 				<ul>
-          {% for cat in all_cat %}
-          
-					<li class="colorlib-active"><a href="/Post/onePost/{{cat.id}}">{{cat.name}}</a></li>
-					 {% endfor%}
+					 
+					<li class="colorlib-active"><a href="onePost.html">{{CatName}}</a></li>
+					 
 				</ul>
 			</nav>
 
 			<div class="colorlib-footer">
-				<h1 id="colorlib-logo" class="mb-4"><a href="index.html" style="background-color:lightseagreen;">Django <span>Blog</span></a></h1>
+				<h1 id="colorlib-logo" class="mb-4"><a href="index.html" style="background-color: lightseagreen;">Django <span>Blog</span></a></h1>
 				 
           </form>
 				 
 		</aside> <!-- END COLORLIB-ASIDE -->
-    <div id="colorlib-main">
+		<div id="colorlib-main">
 			<section class="ftco-section ftco-no-pt ftco-no-pb">
 	    	<div class="container">
 	    		<div class="row d-flex">
@@ -61,20 +57,76 @@
 	    				<div class="row pt-md-4">
 	    					<div class="col-md-12">
 		    					<div class="blog-entry-2 ftco-animate">
- 									{% for p in all_post %}
+ 									{% for ps in all_post_inCat %}
 	    							<div class="text pt-4">
-							  <h3 class="mb-4"><a href="#">{{p.title}}</a></h3>
+							  <h3 class="mb-4"><a href="#">{{ps.title}}</a></h3>
 							  
-							  <h6><span>{{p.post_date}}</span></h6>
+							  <h6><span>{{ps.post_date}}</span></h6>
 							  
-							  <img src="{{p.image.url}}" alt="" class="img-fluid" width=100%>
+							  <img src="{{ps.image.url}}" alt="" class="img-fluid" width=100%>
 							  <br>
 
-				        <p class="mb-4">{{p.content}}</p>
+				              <p class="mb-4">{{ps.content}}</p>
 				               
-				              
+				              <div class="meta-wrap d-md-flex align-items-center">
+				              	<div class="half order-md-last text-md-right">
+					              	<p class="meta">
+					              		<span><i class="icon-heart"></i>{{ps.like_count}}</span>
+					              		<span><i class="icon-heartbeat"></i>{{ps.dislike_count}}</span>
+					              		<span><i class="icon-comment"></i>{{num_comm}}</span>
+					              	</p>
+				              	</div>
+				              	<div class="half">
+					              	<p><a href="#" class="btn btn-primary p-3 px-xl-4 py-xl-3">Continue Reading</a></p>
+				              	</div>
+				              </div>
 							</div>
 							{% endfor %}
+
+							<div class="pt-5 mt-5">
+								<h3 class="mb-5 font-weight-bold">6 Comments</h3>
+								<ul class="comment-list">
+								  <li class="comment">
+									 
+									<div class="comment-body">
+									   
+									  <div class="meta">October 03, 2018 at 2:21pm</div>
+									  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur quidem laborum necessitatibus, ipsam impedit vitae autem, eum officia, fugiat saepe enim sapiente iste iure! Quam voluptas earum impedit necessitatibus, nihil?</p>
+									  <p><a href="#" class="reply">Reply</a></p>
+									</div>
+								  </li>
+		   
+							   </ul>
+									  
+								 <!-- END comment-list -->
+								
+								<div class="comment-form-wrap pt-5">
+								  <h3 class="mb-5">Leave a comment</h3>
+								  <form action="#" class="p-3 p-md-5 bg-light">
+									<div class="form-group">
+									  <label for="name">Name *</label>
+									  <input type="text" class="form-control" id="name">
+									</div>
+									<div class="form-group">
+									  <label for="email">Email *</label>
+									  <input type="email" class="form-control" id="email">
+									</div>
+									<div class="form-group">
+									  <label for="website">Website</label>
+									  <input type="url" class="form-control" id="website">
+									</div>
+		  
+									<div class="form-group">
+									  <label for="message">Message</label>
+									  <textarea name="" id="message" cols="30" rows="10" class="form-control"></textarea>
+									</div>
+									<div class="form-group">
+									  <input type="submit" value="Post Comment" class="btn py-3 px-4 btn-primary">
+									</div>
+		  
+								  </form>
+								</div>
+							  </div>
 	    						</div>
 	    					</div>
 	    					 	 
@@ -85,8 +137,16 @@
 			    		 
 			    	</div>
 	    			 
-          </div>
-          
+	            
+
+	             
+	               
+	               
+ 
+	    		</div>
+	    	</div>
+	    </section>
+		</div><!-- END COLORLIB-MAIN -->
 	</div><!-- END COLORLIB-PAGE -->
 
   <!-- loader -->
@@ -108,6 +168,5 @@
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
   <script src="{% static 'js/google-map.js' %}"></script>
   <script src="{% static 'js/main.js' %}"></script>
-    
   </body>
 </html>

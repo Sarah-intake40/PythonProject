@@ -15,7 +15,7 @@ from django.shortcuts import render, redirect
 #from pyblog.settings import BASE_DIR
 #from django.contrib.auth.decorators import login_required
 #from django.db.models import Q
-from Post.models import Category, post 
+from Post.models import Category, post ,Comment
 
 # Create your views here.
 
@@ -34,13 +34,17 @@ def all_categories(request):
 def post_by_category(request,Id):
     cat = Category.objects.get(id=Id)
     posts = post.objects.filter(Category_id=cat)
-    # return JsonResponse(serializers.serialize('json', posts), safe=False)
-    context = {'all_post_inCat' :posts,
-    'CatName':cat}
-
      
-    # return JsonResponse(serializers.serialize('json', all_post), safe=False)
-  return render (request , 'Post/travel.html' , context)
+
+
+    # post_id=posts.objects.filter(id=owner)
+
+
+    # comm= Comment.objects.filter(owner=post_id)
+    # iterate = comm.count()
+    context = {'all_post_inCat' :posts,
+    'CatName':cat }
+    return render (request , 'Post/onePost.html' , context)
 
 
 def show_post(request, post_id):
@@ -78,16 +82,12 @@ def show_comments(request, post_id):
 
 def all_posts(request):
     all_post = post.objects.all()
-    # for post in all_post:
-    #     post.dir = BASE_DIR
+   
     
     all_cat = Category.objects.all()
-    # for post in all_post:
-    #     post.dir = BASE_DIR
+    
     context = {'all_cat' : all_cat
     ,'all_post' : all_post}
-
-    # return JsonResponse(serializers.serialize('json', all_post), safe=False)
     return render (request , 'Post/single.html' , context)
     
 
