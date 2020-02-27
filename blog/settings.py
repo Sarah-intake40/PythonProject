@@ -117,7 +117,7 @@ USE_TZ = True
 
 STATIC_URL = os.path.join(BASE_DIR,'Post/static/')
 LOGIN_REDIRECT_URL='/Post/single'
-
+              
 
 MEDIA_ROOT=os.path.join(BASE_DIR,'open_img')
 MEDIA_URL='/open_img/'

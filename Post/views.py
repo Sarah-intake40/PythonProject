@@ -9,7 +9,7 @@ from Post.models import Category, post ,Comment
 from Post.form import CommentForm , ReplyForm
 from django.core.exceptions import  ValidationError
 
- 
+        
 
 
 def all_categories(request):
