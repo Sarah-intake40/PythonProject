@@ -1,0 +1,37 @@
+{% load static %}
+<html>
+{% include 'topPage.html' %}
+<body id="page-top">
+	  <!-- Page Wrapper -->
+  <div id="wrapper">
+  {% include "sidebar.html" %}
+        <div id="content-wrapper" class="d-flex flex-column">
+		<!-- Main Content -->
+      <div id="content">
+           {% include "base.html" %}
+	    {% block content %}
+         <div class="border p-4 mb-5">
+            <legend class="border-bottom pb-1 mb-3">login</legend>
+
+            <form method="post">
+              {% csrf_token %}
+              {{ form.as_p }}
+
+                <input class="btn btn-secondary mt-4" type="submit" value="login">
+            </form>
+            <div class="border-top mt-4 pt-2">
+                <small>if you donot have account <a href="{% url 'register' %}">register here</a></small>
+            </div>
+        </div>
+        {% endblock content %}
+	  </div>
+		{% include "footer.html" %}
+        </div>
+      {% include 'endPage.html' %}
+  </div>
+</body>
+
+</html>
+
+
+
