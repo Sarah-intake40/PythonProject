@@ -3,7 +3,7 @@
 	{% load static %}
 
   <head>
-    <title>PostsByCategory</title>
+    <title>Post</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     
@@ -38,7 +38,7 @@
 			<nav id="colorlib-main-menu" role="navigation">
 				<ul>
 					 
-					<li class="colorlib-active"><a href="onePost.html">{{CatName}}</a></li>
+					<li class="colorlib-active"><a href="#">{{CatName}}</a></li>
 					 
 				</ul>
 			</nav>
@@ -57,44 +57,46 @@
 	    				<div class="row pt-md-4">
 	    					<div class="col-md-12">
 		    					<div class="blog-entry-2 ftco-animate">
- 									{% for ps in all_post_inCat %}
+ 									{% for post in Post %}
 	    							<div class="text pt-4">
-							  <h3 class="mb-4"><a href="#">{{ps.title}}</a></h3>
+							  <h3 class="mb-4"><a href="#">{{post.title}}</a></h3>
 							  
-							  <h6><span>{{ps.post_date}}</span></h6>
+							  <h6><span>{{post.post_date}}</span></h6>
 							  
-							  <img src="{{ps.image.url}}" alt="" class="img-fluid" width=100%>
+							  <img src="{{post.image.url}}" alt="" class="img-fluid" width=100%>
 							  <br>
 
-				              <p class="mb-4">{{ps.content}}</p>
+				              <p class="mb-4">{{post.content}}</p>
 				               
 				              <div class="meta-wrap d-md-flex align-items-center">
 				              	<div class="half order-md-last text-md-right">
 					              	<p class="meta">
-					              		<span><i class="icon-heart"></i>{{ps.like_count}}</span>
-					              		<span><i class="icon-heartbeat"></i>{{ps.dislike_count}}</span>
-					              		<span><i class="icon-comment"></i>{{num_comm}}</span>
+					              		<!-- <button ><i class="" ></i></button> -->
+										  <span><a href="/Post/onePost/{{post.id}}" class="btn icon-heart ">{{post.like_count}}</a></span>
+										  <span><a href="/Post/onePost/{{post.id}}" class="btn icon-heartbeat ">{{post.dislike_count}}</a></span>
+					              		<span><a class="btn icon-comment">{{count}}</a></span>
 					              	</p>
 				              	</div>
 				              	<div class="half">
-					              	<p><a href="#" class="btn btn-primary p-3 px-xl-4 py-xl-3">Continue Reading</a></p>
-				              	</div>
+ 				              	</div>
 				              </div>
 							</div>
 							{% endfor %}
 
 							<div class="pt-5 mt-5">
-								<h3 class="mb-5 font-weight-bold">6 Comments</h3>
+								<h3 class="mb-5 font-weight-bold">{{count}} Comment</h3>
 								<ul class="comment-list">
+									{% for comm in all_comments%}
 								  <li class="comment">
 									 
 									<div class="comment-body">
 									   
-									  <div class="meta">October 03, 2018 at 2:21pm</div>
-									  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur quidem laborum necessitatibus, ipsam impedit vitae autem, eum officia, fugiat saepe enim sapiente iste iure! Quam voluptas earum impedit necessitatibus, nihil?</p>
+									  <div class="meta">{{comm.comment_date}}</div>
+									  <p>{{comm.body}}</p>
 									  <p><a href="#" class="reply">Reply</a></p>
 									</div>
 								  </li>
+								  {% endfor %}
 		   
 							   </ul>
 									  
@@ -102,8 +104,9 @@
 								
 								<div class="comment-form-wrap pt-5">
 								  <h3 class="mb-5">Leave a comment</h3>
-								  <form action="#" class="p-3 p-md-5 bg-light">
-									<div class="form-group">
+								  <form action="#" class="p-3 p-md-5 bg-light" method="POST">
+									  {%csrf_token%}
+									<!-- <div class="form-group">
 									  <label for="name">Name *</label>
 									  <input type="text" class="form-control" id="name">
 									</div>
@@ -114,12 +117,13 @@
 									<div class="form-group">
 									  <label for="website">Website</label>
 									  <input type="url" class="form-control" id="website">
-									</div>
-		  
+									</div> -->
+<!-- 		  
 									<div class="form-group">
 									  <label for="message">Message</label>
 									  <textarea name="" id="message" cols="30" rows="10" class="form-control"></textarea>
-									</div>
+									</div> -->
+									{{form.as_p}}
 									<div class="form-group">
 									  <input type="submit" value="Post Comment" class="btn py-3 px-4 btn-primary">
 									</div>

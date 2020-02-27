@@ -59,7 +59,7 @@
 		    					<div class="blog-entry-2 ftco-animate">
  									{% for ps in all_post_inCat %}
 	    							<div class="text pt-4">
-							  <h3 class="mb-4"><a href="#">{{ps.title}}</a></h3>
+							  <h3 class="mb-4"><a href="/Post/onePost/{{ps.id}}">{{ps.title}}</a></h3>
 							  
 							  <h6><span>{{ps.post_date}}</span></h6>
 							  
@@ -73,11 +73,11 @@
 					              	<p class="meta">
 					              		<span><i class="icon-heart"></i>{{ps.like_count}}</span>
 					              		<span><i class="icon-heartbeat"></i>{{ps.dislike_count}}</span>
-					              		<span><i class="icon-comment"></i>5</span>
+					              		 
 					              	</p>
 				              	</div>
 				              	<div class="half">
-					              	<p><a href="#" class="btn btn-primary p-3 px-xl-4 py-xl-3">Continue Reading</a></p>
+					              	<p><a href="/Post/onePost/{{ps.id}}" class="btn btn-primary p-3 px-xl-4 py-xl-3">Continue Reading</a></p>
 				              	</div>
 				              </div>
 							</div>
