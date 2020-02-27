@@ -40,11 +40,30 @@
           <p>Users</p>
       </a>
   </li>
+  <li class="nav-item active nav-black">
+    <a class="nav-link" href="posts">
+        <i class="nc-icon nc-chart-pie-35"></i>
+        <p>Posts</p>
+    </a>
+</li>
+<li class="nav-item active nav-black">
+  <a class="nav-link" href="cats">
+      <i class="nc-icon nc-chart-pie-35"></i>
+      <p>Categories</p>
+  </a>
+</li>
+<li class="nav-item active nav-black">
+  <a class="nav-link" href="words">
+      <i class="nc-icon nc-chart-pie-35"></i>
+      <p>Forbiden Words</p>
+  </a>
+</li>
+
     </ul>
   </div>
     <div class="content">
       <div class="container-fluid">
-          <div class="row justify-content-md-center">
+          <div class="row ">
               <div class="col-md-4 d-flex justify-content-center mb-2 ">
                   <div class="card">
                     <div class="card-header ">
@@ -68,12 +87,12 @@
             <td>{{user.id}}</td>
         
         
-            <td>{{user.name}}</td>
+            <td>{{user.username}}</td>
         
         
                 <td>{{user.email}}</td>
             
-                    <td>{{user.isAdmin}}</td>
+                    <td>{{user.is_staff}}</td>
                 
                      
           </tr>
@@ -114,9 +133,9 @@
       
               <td>{{post.content}}</td>
           
-                  <td>{{post.Date}}</td>
+              <td>{{post.Date}}</td>
               <td>{{post.Owner}}</td>
-              <td>{{post.postCat}}</td>
+              <td>{{post.Category_id}}</td>
         </tr>
      
         {%endif%}
@@ -146,7 +165,6 @@
       <tr>
         <td>{{cat.id}}</td>
     
-    
         <td>{{cat.name}}</td>
       </tr>
       {%endif%}
@@ -156,6 +174,20 @@
 </div>
   </div>
           </div>
+          <div class="col-md-4 d-flex justify-content-center  mb-2 ">
+            <div class="card ">
+                <div class="card-header ">
+                    <h4 class="card-title">Management</h4>
+                    <p class="card-category">Last Campaign Performance</p>
+                </div>
+                <div class="card-body ">
+                  <img src="{% static 'css/assets/img/stat1.jpg'%}" class="img-responsive" style="width: 200px;height: 200px;">
+                    <div class="stats">
+                        <i class="fa fa-clock-o"></i> Campaign sent 2 days ago
+                    </div>
+                </div>
+            </div>
+        </div>
 <!-- Forbiden Words -->
 <div class="col-md-3 d-flex justify-content-center  mb-2 ">
   <div class="card">
@@ -178,9 +210,24 @@
 </div>
 </div>
 </div>
-</div>
-</div>
 
 
+
+<div class="col-md-3 d-flex justify-content-center  mb-2 ">
+  <div class="card ">
+      <div class="card-header ">
+          <h4 class="card-title">Our Admin</h4>
+          <p class="card-category">Last Campaign Performance</p>
+      </div>
+      <div class="card-body ">
+        <img src="{% static 'css/assets/img/503930-637009475898890538-16x9.jpg'%}" class="img-responsive" style="width: 200px;height: 200px;">
+          <div class="stats">
+              <i class="fa fa-clock-o"></i> Campaign sent 2 days ago
+          </div>
+      </div>
+  </div>
+</div>
+</div>
+</div>
 
 </body>

@@ -13,47 +13,38 @@
        <link href="{%static 'css/assets/css/light-bootstrap-dashboard.css?v=2.0.0' %}" rel="stylesheet" />
    <link rel="stylesheet" href="{%static 'css/bootstrap.min.css'%}">
    <!-- <link rel="stylesheet" href="{%static 'css/style.css'%}"> -->
-   
+   <style>
+       /* tr {
+   line-height: 35px;
+   display: inline-table;
+   min-height: 35px;
+   height: 50px;
+} */
+   </style>
    </head>
-<h5>All Users</h5>
-<a href="addUser">Add User</a>
-<body>
-    <!-- <div class="container-fluid"> -->
-        <div class="card">
-<table class="table-striped">
+<div>
+    <div class="container ">
+    <div class="card">
+
+    <div class="card-head">
+    <h5>{{user.name}}</h5>
+    </div>
+    <div class="cord-body">
+    <table boder=1 class="table table-light">
     <th>Id</th>
     <th>Name</th>
     <th>Email</th>
-    <th colspan="5">Controls</th>
-    {%for user in all_users%}
-    {%if user.is_staff%}
-    <tr style="background-color:#FF4500;">
+    <th>Admin</th>
+    <th>blocked</th>
+    <tr >
         <td>{{user.id}}</td>
         <td>{{user.username}}</td>
         <td>{{user.email}}</td>
-        <td><a href="updateUser/{{user.id}}">Update</a></td>
-        <td><a href="user/{{user.id}}">View</a></td> 
-        <td>Can't delete admin</td>
-        <td>Can't block admin </td>
-        <td>Already staff</td>
-        {%else%}
-        <tr>
-        <td>{{user.id}}</td>
-        <td>{{user.username}}</td>
-        <td>{{user.email}}</td>
-        <td><a href="updateUser/{{user.id}}">Update</a></td>
-        <td><a href="user/{{user.id}}">View</a></td> 
-        <td><a href= "deleteUser/{{user.id}}">Delete:(</a></td>
-            {%if user.is_active == 0%}
-        <td><a href="unblockUser/{{user.id}}">Unblock</a></td>
-             {%else%}
-        <td><a href="blockUser/{{user.id}}">block</a></td>
-            {%endif%}
-        <td><a href="setadmin/{{user.id}}">Set admin</a></td>
+        <td>{{user.is_staff}}</td>
+        <td>{{user.is_active}}</td>
     </tr>
-    {%endif%}
-    {%endfor%}
 </table>
-        </div>
-    <!-- </div> -->
-</body>
+    </div>
+    </div>
+    </div>
+</div>
