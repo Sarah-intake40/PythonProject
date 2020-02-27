@@ -1,0 +1,53 @@
+{%load static%}
+<head>
+    <meta charset="utf-8" />
+       <link rel="apple-touch-icon" sizes="76x76" href="{%static 'css/assets/img/apple-icon.png'%}">
+       <link rel="icon" type="image/png" href="{%static 'css/assets/img/favicon.ico'%}">
+       <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+       <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
+       <!--     Fonts and icons     -->
+       <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet" />
+       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" />
+       <!-- CSS Files -->
+       <link href="{%static 'css/assets/css/bootstrap.min.css'%}" rel="stylesheet" />
+       <link href="{%static 'css/assets/css/light-bootstrap-dashboard.css?v=2.0.0' %}" rel="stylesheet" />
+   <link rel="stylesheet" href="{%static 'css/bootstrap.min.css'%}">
+   <!-- <link rel="stylesheet" href="{%static 'css/style.css'%}"> -->
+   <style>
+       /* tr {
+   line-height: 35px;
+   display: inline-table;
+   min-height: 35px;
+   height: 50px;
+} */
+   </style>
+   </head>
+
+
+<div >
+    <div class="container ">
+        <div class="card">
+    
+        <div class="card-head">
+        <h5>{{post.title}}</h5>
+        </div>
+        <div class="cord-body">
+        <table boder=1 class="table table-light">
+    <th>Id</th>
+    <th>Content</th>
+    <th>Post Date</th>
+    <th>Posted by</th>
+    <th>Category</th>
+    <tr>
+        <td>{{post.id}}</td>
+        <td>{{post.content}}</td>
+        <td>{{post.post_date}}</td>
+        <td>{{post.image}}</td>
+        <td>{{post.Owner}}</td>
+        <td>{{post.postCat}}</td>
+    </tr>
+</table>
+</div>
+        </div>
+    </div>
+</div>

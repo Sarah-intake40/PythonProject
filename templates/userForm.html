@@ -1,0 +1,28 @@
+{%extends 'base_form.html'%}
+<!-- {% block content %}
+<form method="POST">
+    {{user.as_p}}
+    <button type="Submit"class="btn btn-success">{%csrf_token%}
+      Save
+    </button>
+
+</form>
+{%endblock%} -->
+{% load crispy_forms_tags %}
+
+  <form method="post" novalidate>
+    {{user.as_p}}
+    {% csrf_token %}
+    <div class="row">
+      <div class="col-6">
+        {{ user.username|as_crispy_field }}
+      </div>
+      <div class="col-6">
+        {{ user.email|as_crispy_field }}
+      </div>
+      <div class="col-6">
+        {{ user.password|as_crispy_field }}
+      </div>
+    </div>
+    <button type="Submit" class="btn btn-success">Save</button>
+  </form>
